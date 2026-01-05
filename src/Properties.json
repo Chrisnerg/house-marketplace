@@ -1,0 +1,95 @@
+{
+  "users": [
+    {
+      "id": 1,
+      "FirstName": "John",
+      "LastName": "Smith",
+      "email": "john@example.com",
+      "phone":"",
+      "password": "",
+      "avatar": "https://i.pravatar.cc/150?img=3"
+    },
+    {
+      "id": 2,
+      "FirstName": "Sarah",
+      "LastName": "Johnson",
+      "email": "sarah@example.com",
+      "phone": "",
+      "password": "",
+      "avatar": "https://i.pravatar.cc/150?img=5"
+    }
+  ],
+  "properties": [
+    {
+      "id": 1,
+      "UserId": 1,
+      "userId": 1,
+      "title": "Modern Family House",
+      "price": 20000000,
+      "status": "for-sale",
+      "featured": true,
+      "image": "https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?q=80&w=1475&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+      "location": {
+        "city": "Clifton",
+        "area": "Atlantic Seaboard",
+        "country": "South Africa"
+      },
+      "features": {
+        "pool": true,
+        "bedrooms": 4,
+        "baths": 3,
+        "garage": {
+          "available": true,
+          "spaces": 2
+        }
+      }
+    },
+    {
+      "id": 2,
+      "userId": 2,
+      "title": "Luxury Villa with Pool",
+      "price": 12000000,
+      "status": "for-rent",
+      "featured": true,
+      "image": "https://images.unsplash.com/photo-1613490493576-7fde63acd811?q=80&w=1470&auto=format&fit=crop",
+      "location": {
+        "city": "Miami Beach",
+        "area": "Florida",
+        "country": "USA"
+      },
+      "features": {
+        "pool": true,
+        "bedrooms": 5,
+        "baths": 3,
+        "garage": {
+          "available": true,
+          "spaces": 3
+        }
+    }
+    },
+    {
+      "id": 3,
+      "UserId": 1,
+      "userId": 1,
+      "title": "Suburban House",
+      "price": "R19 million",
+      "status": "for-sale",
+      "featured": false,
+      "image": "https://plus.unsplash.com/premium_photo-1661908377130-772731de98f6?q=80&w=1412&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+      "location": {
+        "city": "Sandhurst",
+        "area": "Sandton",
+        "country": "South Africa"
+      },
+      "features": {
+        "pool": false,
+        "bedrooms": 3,
+        "baths": 2,
+        "garage": {
+          "available": false,
+          "spaces": 0
+        }
+      }
+    }
+  ]
+}

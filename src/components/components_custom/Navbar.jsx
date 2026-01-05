@@ -1,5 +1,6 @@
 import React from "react";
 import { FiHome } from "react-icons/fi";
+import { Link } from "react-router-dom";
 
 const Navbar = () => {
   return (
@@ -16,17 +17,30 @@ const Navbar = () => {
         {/* Center */}
         <div className="navbar-center">
           <ul className="flex gap-3 text-sm font-medium">
-            <li className="cursor-pointer hover:text-blue-600">Buy</li>
-            <li className="cursor-pointer hover:text-blue-600">Rent</li>
-            <li className="cursor-pointer hover:text-blue-600">Sell</li>
-            <li className="cursor-pointer hover:text-blue-600">Agents</li>
+            <li className="cursor-pointer hover:text-blue-600">
+              <Link to='/buy'>
+                Buy
+              </Link>
+            </li>
+            <li className="cursor-pointer hover:text-blue-600">
+              <Link to='/rent'>
+                Rent
+              </Link>
+            </li>
+            <li className="cursor-pointer hover:text-blue-600">
+              <Link to='/sell'>
+                Sell
+              </Link>
+            </li>
           </ul>
         </div>
 
         {/* Right */}
         <div className="navbar-end">
           <button className="btn px-3 rounded-lg text-white bg-blue-600 hover:bg-blue-700">
-            Sign In
+            <Link to="/signin">
+              Sign In
+            </Link>
           </button>
         </div>
     </div>

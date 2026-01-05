@@ -72,7 +72,7 @@ const Hero = () => {
                   </div>
 
                   <div>
-                    <button className="btn px-3 bg-blue-500 hover:bg-blue-600 text-white rounded p-1">
+                    <button className="btn px-3 bg-blue-600 hover:bg-blue-700 text-white rounded p-1">
                         <RiSearchLine />
                         Search
                     </button>
