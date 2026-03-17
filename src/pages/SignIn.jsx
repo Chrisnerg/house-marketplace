@@ -47,7 +47,7 @@ const SignIn = () => {
             <p className="text-sm mt-3">
               Don't have an account?{" "}
               <span className="text-blue-600 cursor-pointer hover:underline">
-                <Link to="/register">Sign Up</Link>
+                <Link to="/user/register">Sign Up</Link>
               </span>
             </p>
           </form>

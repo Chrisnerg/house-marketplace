@@ -11,8 +11,9 @@ import { Button } from "@/components/ui/button";
 import { MdKeyboardArrowDown } from "react-icons/md";
 import PropertyCard from "./PropertyCard";
 import { propertyContext } from "@/context/propertyContext";
+import PaginationComponent from "@/components/components_custom/PaginationComponent"
 
-const Contents = () => {
+const Contents = ({ title ,description }) => {
   const { properties, loading, error } = useContext(propertyContext);
 
   if (error) {
@@ -28,8 +29,8 @@ const Contents = () => {
       <div className="container mx-auto">
         <div className="flex justify-between mb-8">
           <div>
-            <p className="font-semibold">Available Properties</p>
-            <p className="text-sm text-gray-600">{properties.length} homes for sale</p>
+            <p className="font-semibold">{title}</p>
+            <p className="text-sm text-gray-600">{properties.length} {description}</p>
           </div>
           <div className="px-3">
             <DropdownMenu>
@@ -56,6 +57,7 @@ const Contents = () => {
           ))}
         </div>
       </div>
+      <PaginationComponent className = "my-6"/>
     </section>
   );
 };

@@ -19,7 +19,7 @@ const Register = () => {
         </p>
       </div>
 
-      <div className="container m-auto max-w-xl">
+      <div className="container m-auto max-w-xl pb-40">
         <form className="shadow-md bg-white rounded-md px-6 py-8 mb-8">
           <div className="flex justify-between">
             <div className="flex flex-col">
@@ -83,7 +83,7 @@ const Register = () => {
           <p className="text-sm mt-3">
             Already have an account?{" "}
             <span className="text-blue-600 cursor-pointer hover:underline">
-              <Link to="/signin">Sign In</Link>
+              <Link to="/user/signin">Sign In</Link>
             </span>
           </p>
         </form>

@@ -8,27 +8,27 @@ const Navbar = () => {
       
         {/* Left */}
         <div className="navbar-start">
-          <div className="flex items-center gap-2">
+          <Link to='/' className="flex items-center gap-2">
             <FiHome className="text-2xl text-blue-500" />
             <span className="">HomeMarket</span>
-          </div>
+          </Link>
         </div>
 
         {/* Center */}
         <div className="navbar-center">
           <ul className="flex gap-3 text-sm font-medium">
             <li className="cursor-pointer hover:text-blue-600">
-              <Link to='/buy'>
+              <Link to='/user/buy'>
                 Buy
               </Link>
             </li>
             <li className="cursor-pointer hover:text-blue-600">
-              <Link to='/rent'>
+              <Link to='/user/rent'>
                 Rent
               </Link>
             </li>
             <li className="cursor-pointer hover:text-blue-600">
-              <Link to='/sell'>
+              <Link to='/user/sell'>
                 Sell
               </Link>
             </li>
@@ -38,7 +38,7 @@ const Navbar = () => {
         {/* Right */}
         <div className="navbar-end">
           <button className="btn px-3 rounded-lg text-white bg-blue-600 hover:bg-blue-700">
-            <Link to="/signin">
+            <Link to="/user/signin">
               Sign In
             </Link>
           </button>
