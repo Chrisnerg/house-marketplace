@@ -13,7 +13,7 @@ import PropertyCard from "./PropertyCard";
 import { propertyContext } from "@/context/propertyContext";
 import PaginationComponent from "@/components/components_custom/PaginationComponent"
 
-const Contents = ({ title ,description }) => {
+const Contents = ({ title, description, pagination }) => {
   const { properties, loading, error } = useContext(propertyContext);
 
   if (error) {
@@ -21,7 +21,11 @@ const Contents = ({ title ,description }) => {
   }
 
   if (loading) {
-    return <div className="text-5xl text-center py-24">Loading...</div>;
+    return (
+      <div className="flex items-center justify-center min-h-[40vh] w-full">
+        <span className="loading loading-spinner text-info"></span>
+      </div>
+    );
   }
 
   return (
@@ -57,7 +61,7 @@ const Contents = ({ title ,description }) => {
           ))}
         </div>
       </div>
-      <PaginationComponent className = "my-6"/>
+      {pagination && <PaginationComponent className = "my-6"/>}
     </section>
   );
 };

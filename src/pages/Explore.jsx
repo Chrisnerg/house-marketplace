@@ -6,7 +6,7 @@ const Explore = () => {
   return (
     <>
       <Hero />
-      <Contents description={"Available Properties"}/>
+      <Contents description={"Available Properties"} title={"Available Properties"}/>
     </>
   );
 };

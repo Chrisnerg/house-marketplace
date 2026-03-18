@@ -1,4 +1,4 @@
-import React from 'react'
+import React from "react";
 import { Card, CardContent } from "@/components/ui/card";
 import {
   DropdownMenu,
@@ -16,15 +16,15 @@ import { RiSearchLine } from "react-icons/ri";
 const SearchCard = () => {
   return (
     <div>
-        <Card className="py-1 mt-3 mb-8 w-fit">
-            <CardContent>
-              <form>
-                <div className="flex items-center p-2">
+      <Card className="py-1 mt-3 mb-8 min-w-full">
+        <CardContent>
+          <form>
+            <div className="flex items-center min-w-full p-2">
               <Input
                 id="email"
                 type="email"
                 placeholder="m@example.com"
-                className="border border-gray-300 focus:border-blue-500 focus:outline-none w-96"
+                className="flex-1 min-w-0 border border-gray-300 focus:border-blue-500 focus:outline-none"
                 required
               />
 
@@ -64,18 +64,18 @@ const SearchCard = () => {
                 </DropdownMenu>
               </div>
 
-                  <div>
-                    <button className="btn px-3 bg-blue-600 hover:bg-blue-700 text-white rounded p-1">
-                      <RiSearchLine />
-                      Search
-                    </button>
-                  </div>
-                </div>
-              </form>
-            </CardContent>
-          </Card>
+              <div>
+                <button className="btn px-3 bg-blue-600 hover:bg-blue-700 text-white rounded p-1">
+                  <RiSearchLine />
+                  Search
+                </button>
+              </div>
+            </div>
+          </form>
+        </CardContent>
+      </Card>
     </div>
-  )
-}
+  );
+};
 
-export default SearchCard
+export default SearchCard;

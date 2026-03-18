@@ -1,7 +1,7 @@
 import React from 'react'
 import SearchCard from "@/components/components_custom/SearchCard";
 
-const HeroSecondary = ({bg_color, title, description}) => {
+const HeroSecondary = ({bg_color, title, description, searchCard}) => {
   return (
     <div className={`hero ${bg_color} text-white`}>
         <div className="hero-content w-full">
@@ -10,7 +10,7 @@ const HeroSecondary = ({bg_color, title, description}) => {
             <p className="py-1 text-sm">
               {description}
             </p>
-            <SearchCard />
+            {searchCard && <SearchCard />}
           </div>
         </div>
       </div>
