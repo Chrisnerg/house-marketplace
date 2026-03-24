@@ -1,11 +1,11 @@
 import { varchar, uuid, timestamp, text, pgTable, pgEnum, boolean, doublePrecision } from "drizzle-orm/pg-core";
-import { usersTable } from "./user.model";
+import { agenciesTable } from "./agencies.model.js";
 
 export const statusEnum = pgEnum("property_status", ["for-sale", "for-rent", "sold", "un-available", "active"]);
 
 export const propertiesTable = pgTable("properties", {
     id: uuid().primaryKey().defaultRandom(),
-    userId: uuid().references(() => usersTable.id).notNull(),
+    agencyId: uuid().references(() => agenciesTable.id).notNull(),
 
     title: varchar({ length: 150 }).notNull(),
     price: varchar().notNull(),

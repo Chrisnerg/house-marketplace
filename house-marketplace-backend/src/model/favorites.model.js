@@ -1,6 +1,6 @@
 import { pgTable, primaryKey, timestamp, uuid } from "drizzle-orm/pg-core";
-import { usersTable } from "./user.model";
-import { propertiesTable } from "./properties.model";
+import { usersTable } from "./user.model.js";
+import { propertiesTable } from "./properties.model.js";
 
 export const favoritesTable = pgTable("favorites", {
     userId: uuid().references(() => usersTable.id).notNull(),
