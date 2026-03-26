@@ -39,7 +39,7 @@ export const loginUser = async (req, res) => {
             return res.status(400).json({ error: 'Incorrect password entered.'});
         };
 
-        const token = jwt.sign({ userId: user.id }, JWT_SECRETE);
+        const token = jwt.sign({ userId: user.id, role: user.role }, JWT_SECRETE);
 
         return res.json({ token });
     } catch (error) {

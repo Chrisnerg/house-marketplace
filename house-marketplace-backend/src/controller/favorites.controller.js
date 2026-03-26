@@ -19,7 +19,7 @@ export const addToFavorites = async (req, res) => {
 
 export const getUserFavorites = async (req, res) => {
     try {
-        const userId = req.userId;
+        const userId = req.user.userId;
         const { propertyId } = req.query;
 
         if (typeof userId !== 'string' || !userId.trim()) {
@@ -39,7 +39,7 @@ export const getUserFavorites = async (req, res) => {
 
 export const removeFavorite = async (req, res) => {
     try {
-        const userId = req.userId;
+        const userId = req.user.userId;
         const { propertyId } = req.params;
 
         if (![userId, propertyId].every((field) => typeof field === 'string' && field.trim())) {
