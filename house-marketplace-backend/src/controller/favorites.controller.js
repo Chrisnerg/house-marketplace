@@ -3,10 +3,10 @@ import { postFavorites, fetchFavorites, deleteFavorite } from '../service/favori
 export const addToFavorites = async (req, res) => {
     try {
         const { propertyId } = req.body;
-        const userId = req.userId;
+        const userId = req.user.userId;
 
         if (![userId, propertyId].every((field) => typeof field === 'string' && field.trim())) {
-            return res.status(400).json({ error: 'propertyId is required.' });
+            return res.status(400).json({ error: 'userId and propertyId are required.' });
         }
 
         const userFavorites = await postFavorites(userId.trim(), propertyId.trim());
@@ -43,7 +43,7 @@ export const removeFavorite = async (req, res) => {
         const { propertyId } = req.params;
 
         if (![userId, propertyId].every((field) => typeof field === 'string' && field.trim())) {
-            return res.status(400).json({ error: 'propertyId is required.' });
+            return res.status(400).json({ error: 'propertyId is required and must be valid.' });
         }
 
         const favorite = await deleteFavorite(userId.trim(), propertyId.trim());

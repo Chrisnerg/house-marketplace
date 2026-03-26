@@ -10,9 +10,13 @@ import {
 // Future improvements -> Check if the agencyId exists in the DB.
 export const registerProperty = async (req, res) => {
     try {
-        const { title, price, status, featured, features, locationName, latitude, longitude, placeId, agencyId } = req.body;
+        const { title, price, status, featured, features, locationName, latitude, longitude, placeId, agencyId, imageURLs } = req.body;
 
-        const property = await postProperty(title, price, status, featured, features, locationName, latitude, longitude, placeId, agencyId);
+        const property = await postProperty(
+            title, price, status, featured, features,
+            locationName, latitude, longitude, placeId, agencyId,
+            Array.isArray(imageURLs) ? imageURLs : [],
+        );
 
         return res.status(201).json({ data: property })
     } catch (error) {
