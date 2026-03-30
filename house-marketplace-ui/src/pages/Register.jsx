@@ -1,9 +1,14 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { FiHome } from "react-icons/fi";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import { registerUser } from "@/Api/usersApi";
 
 const Register = () => {
+  const navigate = useNavigate();
   const [accountType, setAccountType] = useState("user");
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState(null);
+  const [isSuccess, setIsSuccess] = useState(false);
   const [formData, setFormData] = useState({
     firstName: "",
     lastName: "",
@@ -27,12 +32,109 @@ const Register = () => {
     }));
   };
 
-  const handleSubmit = (event) => {
+  const handleSubmit = async (event) => {
     event.preventDefault();
+    setError(null);
+    setIsSuccess(false);
+
+    // Validate passwords match
+    if (formData.password !== formData.confirmPassword) {
+      setError("Passwords do not match");
+      return;
+    }
+
+    // Build payload based on account type
+    const payload = 
+      accountType === 'user'
+        ? {
+            fullName: `${formData.firstName} ${formData.lastName}`,
+            email: formData.email,
+            phone: formData.phone,
+            password: formData.password,
+            role: 'user',
+          }
+        : {
+            agencyName: formData.agencyName,
+            licenseNumber: formData.licenseNumber,
+            officeAddress: formData.officeAddress,
+            website: formData.website,
+            yearsInBusiness: parseInt(formData.yearsInBusiness, 10) || 0,
+            email: formData.email,
+            phone: formData.phone,
+            password: formData.password,
+            role: 'agency',
+          };
+
+    setLoading(true);
+    try {
+      const response = await registerUser(payload);
+      if (response.error) {
+        setError(response.error);
+      } else {
+        setIsSuccess(true);
+        setTimeout(() => {
+          navigate("/user/signin");
+        }, 1600);
+      }
+    } catch (err) {
+      setError(err.message || "Registration failed");
+    } finally {
+      setLoading(false);
+    }
   };
+
+  useEffect(() => {
+    if (!error) return;
+
+    const timeoutId = setTimeout(() => {
+      setError(null);
+    }, 2000);
+
+    return () => clearTimeout(timeoutId);
+  }, [error]);
 
   return (
     <div className="min-h-screen bg-gray-50">
+      {error && (
+        <div className="fixed top-4 left-1/2 -translate-x-1/2 z-50 w-[92%] max-w-md" role="alert">
+          <div className="alert alert-error shadow-md">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              className="h-6 w-6 shrink-0 stroke-current"
+              fill="none"
+              viewBox="0 0 24 24"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth="2"
+                d="M10 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2m7-2a9 9 0 11-18 0 9 9 0 0118 0z"
+              />
+            </svg>
+            <span>{error}</span>
+          </div>
+        </div>
+      )}
+      {isSuccess && (
+        <div className="fixed top-4 left-1/2 -translate-x-1/2 z-50 w-[92%] max-w-md" role="alert">
+          <div className="alert alert-success shadow-md">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              className="h-6 w-6 shrink-0 stroke-current"
+              fill="none"
+              viewBox="0 0 24 24"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth="2"
+                d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"
+              />
+            </svg>
+            <span>Signup successful. Redirecting to sign in...</span>
+          </div>
+        </div>
+      )}
       <div className="flex flex-col items-center justify-center pt-44 pb-6">
         <div className="flex items-center gap-2">
           <FiHome className="text-base text-blue-500 " />
@@ -227,8 +329,12 @@ const Register = () => {
               />
             </div>
           </div>
-          <button className="btn container mt-6 bg-blue-600 text-white">
-            Sign Up
+          <button
+            type="submit"
+            disabled={loading}
+            className="btn container mt-6 bg-blue-600 text-white disabled:opacity-60"
+          >
+            {loading ? "Signing Up..." : "Sign Up"}
           </button>
           <p className="text-sm mt-3">
             Already have an account?{" "}

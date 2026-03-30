@@ -7,7 +7,7 @@ import propertiesRouter from './src/routes/properties.routes.js';
 import userRouter from './src/routes/user.routes.js';
 
 const app = express();
-const PORT = process.env.PORT ?? 8000;
+const PORT = process.env.PORT ?? 5000;
 
 app.use(express.json());
 app.use(agencyRouter);

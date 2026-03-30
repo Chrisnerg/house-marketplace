@@ -20,6 +20,7 @@ export const registerUser = async (req, res) => {
 
        return res.status(201).json({ data: { userId } });
     } catch (error) {
+        console.error('[registerUser] error:', error);
         return res.status(500).json({ error: 'Unable to complete sign up right now.'});
     }
 };
